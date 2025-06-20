@@ -1,6 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
 
+// Default JSON options (preserves ASP.NET Core's camelCase-to-PascalCase binding)
 builder.Services.AddControllers();
+
 // CORS to allow Vue dev server
 builder.Services.AddCors(options =>
 {

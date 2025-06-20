@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:58096",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\Users\\BC4599\\source\\repos\\PetInsuranceProject\\PetInsuranceProject.server\\..\\petinsuranceproject.client",
+"WorkingDirectory": "C:\\Users\\BC4599\\source\\repos\\PetInsuranceProject\\petinsuranceproject.server\\..\\petinsuranceproject.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

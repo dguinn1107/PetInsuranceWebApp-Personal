@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BqG4hdNNKwM=",
+  "dgSpecHash": "pgKozRLWZe4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\BC4599\\source\\repos\\PetInsuranceProject\\PetInsuranceProject.server\\PetInsuranceProject.Server.csproj",
+  "projectFilePath": "C:\\Users\\BC4599\\source\\repos\\PetInsuranceProject\\petinsuranceproject.server\\PetInsuranceProject.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BC4599\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.15\\microsoft.aspnetcore.openapi.8.0.15.nupkg.sha512",
     "C:\\Users\\BC4599\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.17\\microsoft.aspnetcore.spaproxy.8.0.17.nupkg.sha512",

@@ -81,28 +81,32 @@ const getQuote = async () => {
 
 <style scoped>
 html, body, #app {
-  height: 100%;
+  height: 100vh;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
 }
 .site-header {
-  background: #fff;
+  flex: 0;
+  width: 100%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.navbar {
-  display: flex;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-.brand-link .logo {
-  height: 40px;
 }
 .hero {
   display: flex;
+  flex: 1;
   width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.hero-image {
+  flex: 1;
+  height: auto;
 }
 .hero-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 .hero-form {
