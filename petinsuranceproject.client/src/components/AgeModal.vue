@@ -1,147 +1,82 @@
 <template>
-  <header class="site-header">
-    <nav class="navbar">
-      <a href="https://www.alfainsurance.com/" target="_blank" rel="noopener" class="brand-link">
-        <img src="@/assets/alfa-logo.png" alt="Alfa Insurance" class="logo" />
-      </a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="hero-image">
-      <img src="@/assets/petting-dog.jpg" alt="Petting a Dog" />
-    </div>
-    <div class="hero-form">
-      <h2>Get a Pet Insurance Quote</h2>
-      <form @submit.prevent="getQuote" class="quote-form">
-        <input v-model="form.name" type="text" placeholder="Your Name" required />
-        <input v-model="form.email" type="email" placeholder="Your Email" required />
-        <input v-model="form.petName" type="text" placeholder="Pet Name" required />
-        <select v-model="form.breed" required>
-          <option disabled value="">Select Breed</option>
-          <option v-for="breed in breeds" :key="breed">{{ breed }}</option>
-        </select>
-        <input
-          v-model="form.age"
-          type="text"
-          placeholder="Pet Age"
-          @input="checkAge"
-          required
-        />
-        <button type="submit" class="btn-get-quote">Get Started</button>
-      </form>
-      <div v-if="quote !== null" class="quote-result">
-        <p>Your estimated monthly premium is <strong>${{ quote }}</strong></p>
+  <div class="modal-backdrop fade show custom-backdrop"></div>
+  <div class="modal d-block custom-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-alfa">
+        <button type="button" class="close-btn" @click="$emit('close')">&times;</button>
+        <div class="modal-body">
+          <div class="logo-container">
+            <img src="@/assets/alfa-logo.png" alt="Alfa Logo" />
+          </div>
+          <p class="modal-text">Alfa Insurance only insures dogs below the age of 15</p>
+        </div>
       </div>
     </div>
-  </section>
-
-  <AgeModal v-if="showModal" @close="showModal = false" />
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import axios from 'axios';
-import AgeModal from '@/components/AgeModal.vue';
-
-const form = ref({ name: '', email: '', petName: '', breed: '', age: '' });
-const breeds = [
-  'Labrador Retriever','French Bulldog','German Shepherd',
-  'Golden Retriever','Bulldog (English)','Beagle',
-  'Shih Tzu','Chihuahua','Rottweiler','Poodle (Standard)'
-];
-const quote = ref(null);
-const showModal = ref(false);
-
-const checkAge = (event) => {
-  const age = parseInt(event.target.value, 10);
-  if (age > 14) {
-    showModal.value = true;
-    form.value.age = '';
-  }
-};
-
-const getQuote = async () => {
-  if (!form.value.age) return;
-  try {
-    const res = await axios.post('/api/quote', {
-      ownerName:  form.value.name,
-      ownerEmail: form.value.email,
-      petName:    form.value.petName,
-      petBreed:   form.value.breed,
-      petAge:     parseInt(form.value.age, 10)
-    });
-    quote.value = res.data.monthlyPremium;
-  } catch (err) {
-    console.error(err);
-    alert(err.response?.data || 'Error retrieving quote.');
-  }
-};
+const emit = defineEmits(['close']);
 </script>
 
 <style scoped>
-html, body, #app {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-}
-.site-header {
-  flex: 0;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.hero {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-.hero-image {
-  flex: 1;
-  height: auto;
-}
-.hero-image img {
+/* Ensure backdrop covers entire viewport */
+.custom-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  z-index: 1040;
 }
-.hero-form {
-  background: #21759b;
-  color: #fff;
-  padding: 2rem;
-  flex: 1;
+
+/* Center modal above everything */
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1050;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
-.quote-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.quote-form input,
-.quote-form select {
-  padding: 0.75rem;
+
+.modal-alfa {
+  background-color: #21759b;
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1051;
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem 1.5rem;
+  text-align: center;
 }
-.btn-get-quote {
-  background: #fff;
-  color: #21759b;
-  padding: 0.75rem;
-  border: none;
+
+.logo-container {
+  background-color: #fff;
+  padding: 12px;
   border-radius: 4px;
-  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
   cursor: pointer;
 }
-.quote-result {
-  margin-top: 1.5rem;
-  background: rgba(255,255,255,0.2);
-  padding: 1rem;
-  border-radius: 4px;
+
+.modal-text {
+  margin-top: 0rem;
 }
 </style>

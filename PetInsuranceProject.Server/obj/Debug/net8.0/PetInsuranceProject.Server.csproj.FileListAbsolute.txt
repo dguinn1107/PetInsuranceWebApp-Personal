@@ -37,3 +37,4 @@ C:\Users\BC4599\source\repos\PetInsuranceProject\PetInsuranceProject.server\obj\
 C:\Users\BC4599\source\repos\PetInsuranceProject\PetInsuranceProject.server\obj\Debug\net8.0\PetInsuranceProject.Server.pdb
 C:\Users\BC4599\source\repos\PetInsuranceProject\PetInsuranceProject.server\obj\Debug\net8.0\PetInsuranceProject.Server.genruntimeconfig.cache
 C:\Users\BC4599\source\repos\PetInsuranceProject\PetInsuranceProject.server\obj\Debug\net8.0\ref\PetInsuranceProject.Server.dll
+C:\Users\BC4599\source\repos\PetInsuranceProject\petinsuranceproject.server\obj\Debug\net8.0\PetInsuranceProject.Server.sourcelink.json
