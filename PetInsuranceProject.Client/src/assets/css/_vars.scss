@@ -1,0 +1,115 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
+
+// ------------------------------------------------------ //
+// Design Colors
+//
+$jelly-bean: #287389;
+$fountain-blue: #4D9CBC;
+$monza: #C30717;
+$link-water: #D7E9F4;
+$picton-blue: #41B8E8;
+$alabaster: #FAFAFA;
+$wild-sand: #F4F4F4;
+$dusty-gray: #999999;
+$dove-gray: #707070;
+$mine-shaft: #333333;
+$siam: #5F5F4F;
+$emperor: #555555;
+
+//Shades of Blue
+$ming: #387289;
+$paradiso: #30697E;
+$jelly-bean: #287D9F;
+$boston-blue: #378EB1;
+
+// Greys
+$white: #fff;
+$black: #000;
+$grey: $dove-gray;
+$grey-xx-light: #F6F6F6;
+$grey-x-light: #CCC;
+$grey-light: $dusty-gray;
+$grey-medium: $siam;
+$grey-dark: $mine-shaft;
+
+// ------------------------------------------------------ //
+// Utility Colors
+//
+$error: $monza;
+
+// ------------------------------------------------------ //
+// Brand Definitions
+//
+$brand-primary: $jelly-bean;
+$brand-secondary: $link-water;
+$brand-tertiary: $black;
+$brand-danger: $error;
+
+// ------------------------------------------------------ //
+// Social Media
+//
+$color-tw: #1DA1F2;
+$color-fb: #4267B2;
+$color-yt: #FF0000;
+
+// ------------------------------------------------------ //
+// Text Colors
+//
+$text-color-light: $white;
+$text-color-medium: $grey-light;
+$text-color-grey: $grey;
+$text-color-dark: $mine-shaft;
+
+$text-color-primary: $brand-primary;
+$text-color-secondary: $brand-secondary;
+
+// Font-Face //
+@mixin font-face($font-name, $font-path) {
+    @font-face {
+        font-family: $font-name;
+        src: url('../fonts/#{$font-path}/#{$font-name}-webfont.woff') format('woff'), url('../fonts/#{$font-path}/#{$font-name}-webfont.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+@include font-face('coresansn35', 'coresansn/Webfonts/coresansn_35light_macroman');
+@include font-face('coresansn35it', 'coresansn/Webfonts/coresansn_35lightitalic_macroman');
+@include font-face('coresansn37', 'coresansn/Webfonts/coresansn_37cnlight_macroman');
+@include font-face('coresansn45', 'coresansn/Webfonts/coresansn_45regular_macroman');
+@include font-face('coresansn45it', 'coresansn/Webfonts/coresansn_45italic_macroman');
+@include font-face('coresansn47', 'coresansn/Webfonts/coresansn_47cnregular_macroman');
+@include font-face('coresansn55', 'coresansn/Webfonts/coresansn_55medium_macroman');
+@include font-face('coresansn57', 'coresansn/Webfonts/coresansn_57cnmedium_macroman');
+@include font-face('coresansn65', 'coresansn/Webfonts/coresansn_65bold_macroman');
+@include font-face('coresansn65it', 'coresansn/Webfonts/coresansn_65bolditalic_macroman');
+@include font-face('coresansn67', 'coresansn/Webfonts/coresansn_67cnbold_macroman');
+
+$title-font: 'coresansn65', sans-serif;
+$medium-font: 'coresansn55', sans-serif;
+$regular-font: 'coresansn45', sans-serif;
+$body-font: 'coresansn35', sans-serif;
+$font-awesome: 'Font Awesome 6 Free';
+$aurore-font: 'La Belle Aurore', sans-serif; 
+
+$line-height: 1.75em;
+
+// // ------------------------------------------------------ //
+// // Font Sizes
+// //
+$font-size-base: 1rem;
+$font-size-xs: $font-size-base - 0.2; // .8rem  - 12.8px
+$font-size-sm: $font-size-base;       // 1rem   - 16px
+$font-size-md: $font-size-base+0.5;   // 1.5rem - 24px
+$font-size-lg: $font-size-base+1;     // 2rem   - 32px
+$font-size-xl: $font-size-base+1.5;   // 2.5rem - 40px
+$font-size-xxl: $font-size-base+2;    // 3rem   - 48px
+
+// Bootstrap Overrides
+$primary: $brand-primary;
+$danger: $error;
+$font-family-base: $body-font;
+$display-font-family: $title-font;
+$input-placeholder-color: $text-color-dark;
+$body-color: $text-color-dark;
+$modal-content-color: $text-color-dark;
