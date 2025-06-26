@@ -93,10 +93,14 @@ html, body, #app {
 .hero {
   display: flex;
   width: 100%;
+  align-items: stretch;
+}
+.hero-image{
+  overflow: hidden;
 }
 .hero-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 .hero-form {
