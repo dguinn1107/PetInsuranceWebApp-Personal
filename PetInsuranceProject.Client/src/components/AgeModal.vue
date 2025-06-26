@@ -46,7 +46,7 @@ const emit = defineEmits(['close']);
 .modal-alfa {
   background-color: #21759b;
   color: #fff;
-  border: none;
+  border: 2px solid #fff;
   border-radius: 8px;
   position: relative;
   z-index: 1051;
@@ -54,6 +54,7 @@ const emit = defineEmits(['close']);
   max-width: 500px;
   padding: 2rem 1.5rem;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .logo-container {
@@ -77,6 +78,10 @@ const emit = defineEmits(['close']);
 }
 
 .modal-text {
-  margin-top: 0rem;
+  margin-top: 1rem;
+  display: inline-block;
+  border: 2px solid #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
 }
 </style>
