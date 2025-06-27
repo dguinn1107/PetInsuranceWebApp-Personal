@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import PetInsurance from '../views/PetInsurance.vue'
+import PetInsurance from '../views/QuickQuote.vue'
 
 const routes = [
   { path: '/', name: 'PetInsurance', component: PetInsurance }

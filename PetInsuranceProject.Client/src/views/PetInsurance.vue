@@ -1,141 +1,161 @@
 <template>
-
-
-  <section class="hero">
-    <div class="hero-image">
-      <img src="@/assets/images/petting-dog.jpg" alt="Petting a Dog" />
-    </div>
-    <div class="hero-form">
-      <h2>Get a Pet Insurance Quote</h2>
-      <form @submit.prevent="getQuote" class="quote-form">
-        <input v-model="form.name" type="text" placeholder="Your Name" required />
-        <input v-model="form.email" type="email" placeholder="Your Email" required />
-        <input v-model="form.petName" type="text" placeholder="Pet Name" required />
-        <select v-model="form.breed" required>
-          <option disabled value="">Select Breed</option>
-          <option v-for="breed in breeds" :key="breed">{{ breed }}</option>
+  <section class="container my-5">
+    <!-- Get a Quote Bar -->
+    <div class="d-flex align-items-center mx-auto mb-5" style="width:1200px; height:88px; background: #f6f6f6;">
+      <!-- Left Icon -->
+      <div style="width:134px; height:88px; display:flex; align-items:center; justify-content:center;">
+        <div style="width:88px; height:88px; border-radius:50%; background:#287D9F; display:flex; align-items:center; justify-content:center;">
+          <img
+          src="@/assets/images/AlfieHangOver.png"
+          alt="Quote Icon"
+          style="width:134px; height:88px;" />
+        </div>
+      </div>
+      <!-- Text -->
+      <div class="d-flex align-items-center" style="width:276px; height:50px;">
+        <span>Switch to Alfa for insurance savings.</span>
+      </div>
+      <!-- Spacer -->
+      <div class="flex-grow-1"></div>
+      <!-- Auto Dropdown -->
+      <div style="width:156px; height:31px;">
+        <select v-model="insuranceType" class="form-control" style="width:100%; height:100%;">
+          <option value="Auto">Auto</option>
+          <option value="Homeowners">Homeowners</option>
+          <option value="Renters">Renters</option>
+          <option value="Pet">Pet</option>
         </select>
-        <input
-          v-model="form.age"
-          type="text"
-          placeholder="Pet Age"
-          @input="checkAge"
-          required
+      </div>
+      <!-- Zip Code -->
+      <div class="ml-3" style="width:156px; height:31px;">
+        <input v-model="zipCode" type="text" placeholder="Zip Code" class="form-control" style="width:100%; height:100%;" />
+      </div>
+      <!-- Get a Quote Button -->
+      <div class="ml-3" style="width:136px; height:40px;">
+        <button @click.prevent="getQuote" class="btn btn-primary" style="width:100%; height:100%;">Get a Quote</button>
+      </div>
+    </div>
+
+    <!-- Pet Insurance Intro -->
+    <div class="text-center mb-5">
+      <h1 class="display-4">Pet Insurance with Alfa®</h1>
+      <p class="lead">Pet insurance…</p>
+    </div>
+
+    <!-- Image and Why Pet Insurance -->
+    <div class="row mb-5">
+      <div class="col-md-6 text-center" style="width:635px; height:620px;">
+        <img
+          src="@/assets/images/petting-dog.jpg"
+          alt="Petting a Dog"
+          class="img-fluid rounded"
+          style="width:100%; height:100%; object-fit:cover;"
         />
-        <button type="submit" class="btn btn-primary">Get Started</button>
-      </form>
-      <div v-if="quote !== null" class="quote-result">
-        <p>Your estimated monthly premium is <strong>${{ quote }}</strong></p>
+      </div>
+      <div class="col-md-6 d-flex align-items-center" style="width:445px; height:620px;">
+        <div>
+          <h3>Why get pet insurance?</h3>
+          <p>
+            When your pet is sick or injured, the last thing you want to do is worry
+            about money. Insurance helps you get the best care without worrying about
+            the cost.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coverage Highlights -->
+    <div class="row text-center mb-5">
+      <div class="col-md-4 mb-4">
+        <div class="p-4 border rounded">
+          <i class="fas fa-paw fa-3x mb-3"></i>
+          <h5 class="font-weight-bold">Injury</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="p-4 border rounded">
+          <i class="fas fa-heartbeat fa-3x mb-3"></i>
+          <h5 class="font-weight-bold">Illness</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="p-4 border rounded">
+          <i class="fas fa-thermometer-half fa-3x mb-3"></i>
+          <h5 class="font-weight-bold">Wellness</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Homeowners plus pets banner -->
+    <div class="bg-light py-5 text-center mb-5">
+      <h2>Homeowners plus pets</h2>
+      <p class="mb-0">Pet insurance is available with an Alfa homeowners policy</p>
+    </div>
+
+    <!-- Detailed Coverage Cards -->
+    <div class="row mb-5">
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Injury and Illness Coverage</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet. Tincidunt lectus purus nec.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Injury and Illness + Wellness Coverage</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet. Tincidunt lectus purus nec.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Find an Agent Row -->
+    <div class="row align-items-center py-4 bg-primary text-white rounded">
+      <div class="col-md-8">
+        <h4>Find an Agent:</h4>
+      </div>
+      <div class="col-md-4">
+        <form class="form-inline" @submit.prevent="findAgent">
+          <input
+            v-model="agentZip"
+            type="text"
+            class="form-control mr-2"
+            placeholder="Zip Code"
+          />
+          <button type="submit" class="btn btn-light">Go</button>
+        </form>
       </div>
     </div>
   </section>
-
-  <AgeModal v-if="showModal" @close="showModal = false" />
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import axios from 'axios';
-import AgeModal from '@/components/AgeModal.vue';
-
-const form = ref({ name: '', email: '', petName: '', breed: '', age: '' });
-const breeds = [
-  'Labrador Retriever','French Bulldog','German Shepherd',
-  'Golden Retriever','Bulldog (English)','Beagle',
-  'Shih Tzu','Chihuahua','Rottweiler','Poodle (Standard)'
-];
-const quote = ref(null);
-const showModal = ref(false);
-
-const checkAge = (event) => {
-  const age = parseInt(event.target.value, 10);
-  if (age > 14) {
-    showModal.value = true;
-    form.value.age = '';
-  }
-};
-
-const getQuote = async () => {
-  if (!form.value.age) return;
-  try {
-    const res = await axios.post('/api/quote', {
-      ownerName:  form.value.name,
-      ownerEmail: form.value.email,
-      petName:    form.value.petName,
-      petBreed:   form.value.breed,
-      petAge:     parseInt(form.value.age, 10)
-    });
-    quote.value = res.data.monthlyPremium;
-  } catch (err) {
-    console.error(err);
-    alert(err.response?.data || 'Error retrieving quote.');
+<script>
+export default {
+  name: 'PetInsuranceSections',
+  data() {
+    return {
+      insuranceType: 'Pet',
+      zipCode: '',
+      agentZip: ''
+    };
+  },
+  methods: {
+    getQuote() {
+      // implement quote logic
+    },
+    findAgent() {
+      // implement agent search logic
+    }
   }
 };
 </script>
 
 <style scoped>
-html, body, #app {
-  height: 100%;
-  margin: 0;
-}
-.site-header {
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.navbar {
-  display: flex;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-.brand-link .logo {
-  height: 40px;
-}
-.hero {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-}
-.hero-image{
-  overflow: hidden;
-}
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hero-form {
-  background: #21759b;
-  color: #fff;
-  padding: 2rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.quote-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.quote-form input,
-.quote-form select {
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-}
-.btn-get-quote {
-  background: #fff;
-  color: #21759b;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.quote-result {
-  margin-top: 1.5rem;
-  background: rgba(255,255,255,0.2);
-  padding: 1rem;
-  border-radius: 4px;
-}
+/* All sizing & layout handled via inline styles and Bootstrap */
 </style>
