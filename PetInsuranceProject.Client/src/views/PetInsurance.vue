@@ -201,10 +201,8 @@ export default {
   },
   methods: {
     getQuote() {
-      // implement quote logic
     },
     findAgent() {
-      // implement agent search logic
     }
   }
 };
@@ -238,7 +236,6 @@ export default {
 .icon-img { width: 134px; height: 88px; }
 .text-wrapper { width: 276px; height: 50px; }
 
-/* only disable native arrow on the pet dropdown */
 .dropdown-wrapper {
   width: 156px;
   height: 31px;
