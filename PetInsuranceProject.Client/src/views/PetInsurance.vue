@@ -144,10 +144,25 @@
 </div>
 
     <!-- Homeowners plus pets banner -->
-    <div class="bg-light py-5 text-center mb-5">
-      <h2>Homeowners plus pets</h2>
-      <p class="mb-0">Pet insurance is available with an Alfa homeowners policy</p>
+<section class="homeowners-banner">
+  <!-- dark background layer -->
+  <div class="banner-bg banner-bg-dark"></div>
+  <!-- light‐blue overlay -->
+  <div class="banner-bg banner-bg-light"></div>
+  <!-- content on top -->
+  <div class="banner-content">
+    <div class="banner-title">Homeowners Plus Pets</div>
+    <div class="banner-desc">
+      Pet insurance is available with an Alfa homeowners policy
     </div>
+    <div class="bundle-images">
+      <img src="@/assets/images/house.png" alt="House" />
+      <img src="@/assets/images/plus.png" alt="Plus" />
+      <img src="@/assets/images/dog.png" alt="Dog" />
+    </div>
+  </div>
+</section>
+
 
     <!-- Detailed Coverage Cards -->
     <div class="row mb-5">
@@ -427,6 +442,89 @@ export default {
   line-height: 125%;
   text-align: center;
   color: #333333;
+}
+/* ----------------------------------------
+   Homeowners Plus Pets Banner
+   ---------------------------------------- */
+   .homeowners-banner {
+  position: relative;
+  width: 1200px;
+  height: 423px;
+  margin: 2rem auto;
+}
+
+/* background layers: both fill the banner */
+.banner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1200px;
+  height: 423px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* your two supplied PNGs */
+.banner-bg-dark {
+  background-image: url('@/assets/images/darkbackground.png');
+  z-index: 0;
+}
+.banner-bg-light {
+  background-image: url('@/assets/images/lightbackground.png');
+  z-index: 1;
+}
+
+/* content wrapper */
+.banner-content {
+  position: absolute;
+  top: 101px;
+  left: 128px;
+  width: 945px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+}
+
+/* title */
+.banner-title {
+  font-family: 'Core Sans N';
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 125%;
+  text-align: center;
+  color: #333333;
+}
+
+/* description */
+.banner-desc {
+  width: 945px;
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 125%;
+  text-align: center;
+  color: #333333;
+}
+
+/* icons row */
+.bundle-images {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.bundle-images img:nth-child(1) {
+  width: 146px;
+  height: 104px;
+}
+.bundle-images img:nth-child(2) {
+  width: 21.44px;
+  height: 21.44px;
+}
+.bundle-images img:nth-child(3) {
+  width: 105px;
+  height: 104px;
 }
 
 /* other Bootstrap‐based sections inherit their styling */
