@@ -79,50 +79,69 @@
     </div>
 
     <!-- Image and Why Pet Insurance -->
-    <div class="row mb-5">
-      <div class="col-md-6 text-center image-container">
-        <img
-          src="@/assets/images/Dog_Image.png"
-          alt="Petting a Dog"
-          class="img-fluid rounded"
-        />
+    <div class="dog-why-section mb-5">
+  <!-- Left: Dog Image -->
+  <div class="dog-image-wrapper">
+    <img
+      src="@/assets/images/Dog_Image.png"
+      alt="Petting a Dog"
+      class="dog-img"
+    />
+  </div>
+
+  <!-- Right: Why Pet Insurance text -->
+  <div class="why-text-wrapper">
+    <div class="why-title">Why get pet insurance?</div>
+    <div class="why-paragraph">
+      When your pet is sick or injured, the last thing you want to do is worry
+      about money. Insurance gives you the freedom to make decisions based on
+      what’s best for your pet—not your wallet.
+    </div>
+  </div>
+</div>
+
+    <!-- Coverage Highlights -->
+    <div class="coverage-section">
+  <div class="coverage-title">Our Pet Insurance Covers</div>
+
+  <div class="coverage-container">
+    <div class="coverage-item">
+      <div class="coverage-icon">
+        <img src="@/assets/images/injury.png" alt="Injury" />
       </div>
-      <div class="col-md-6 d-flex align-items-center text-block">
-        <div>
-          <h3>Why get pet insurance?</h3>
-          <p>
-            When your pet is sick or injured, the last thing you want to do is worry
-            about money. Insurance helps you get the best care without worrying about
-            the cost.
-          </p>
-        </div>
+      <div class="coverage-item-title">Injury</div>
+      <div class="coverage-item-desc">
+        Unexpected accidents like broken bones, cuts, or swallowed
+        objects, ensuring your pet gets the emergency care they need
+        without delay.
       </div>
     </div>
 
-    <!-- Coverage Highlights -->
-    <div class="row text-center mb-5">
-      <div class="col-md-4 mb-4">
-        <div class="p-4 border rounded">
-          <i class="fas fa-paw fa-3x mb-3"></i>
-          <h5 class="font-weight-bold">Injury</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec.</p>
-        </div>
+    <div class="coverage-item">
+      <div class="coverage-icon">
+        <img src="@/assets/images/illness.png" alt="Illness" />
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="p-4 border rounded">
-          <i class="fas fa-heartbeat fa-3x mb-3"></i>
-          <h5 class="font-weight-bold">Illness</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec.</p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="p-4 border rounded">
-          <i class="fas fa-thermometer-half fa-3x mb-3"></i>
-          <h5 class="font-weight-bold">Wellness</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec.</p>
-        </div>
+      <div class="coverage-item-title">Illness</div>
+      <div class="coverage-item-desc">
+        Supports treatment for common and serious health conditions
+        such as allergies, infections, or chronic diseases like
+        diabetes or cancer.
       </div>
     </div>
+
+    <div class="coverage-item">
+      <div class="coverage-icon">
+        <img src="@/assets/images/wellness.png" alt="Wellness" />
+      </div>
+      <div class="coverage-item-title">Wellness</div>
+      <div class="coverage-item-desc">
+        Focuses on preventive care, covering routine checkups,
+        vaccinations, flea and tick prevention, and dental cleanings
+        to keep your pet healthy year-round.
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Homeowners plus pets banner -->
     <div class="bg-light py-5 text-center mb-5">
@@ -289,8 +308,129 @@ export default {
 }
 
 /* Image & Why */
-.image-container { width: 635px; height: 620px; }
-.text-block { width: 445px; height: 620px; }
+/* Container holding both image and text */
+.dog-why-section {
+  width: 1110px;
+  height: 620px;
+  margin: 0 auto 2rem;
+  display: flex;
+  gap: 30px;
+}
+
+/* Left side: fixed-size dog image */
+.dog-image-wrapper {
+  width: 635px;
+  height: 620px;
+  overflow: hidden;
+}
+.dog-image-wrapper .dog-img {
+  width: 635px;
+  height: 620px;
+  object-fit: cover;
+}
+
+/* Right side: text, centered vertically & horizontally */
+.why-text-wrapper {
+  width: 445px;
+  height: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #D7E9F4;
+
+  ;
+}
+
+/* Title styling */
+.why-title {
+  width: 365px;
+  height: 35px;
+  font-family: 'Core Sans N';
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 125%;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+/* Paragraph styling */
+.why-paragraph {
+  width: 375px;
+  height: 125px;
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 125%;
+  letter-spacing: 0;
+  color: #333333;
+  margin-top: 20px;
+}
+.coverage-section {
+  width: 1110px;
+  height: 440px;
+  margin: 0 auto 2rem;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.coverage-title {
+  width: 410px;
+  height: 45px;
+  margin: 0 auto;
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 125%;
+  text-align: center;
+  color: #333333;
+}
+
+.coverage-container {
+  width: 1110px;
+  height: 307px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+}
+
+.coverage-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.coverage-icon {
+  width: 120px;
+  height: 120px;
+}
+.coverage-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.coverage-item-title {
+  font-family: 'Core Sans N';
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 125%;
+  text-align: center;
+  color: #333333;
+}
+
+.coverage-item-desc {
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 125%;
+  text-align: center;
+  color: #333333;
+}
 
 /* other Bootstrap‐based sections inherit their styling */
 </style>
