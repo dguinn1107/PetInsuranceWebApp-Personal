@@ -1,58 +1,93 @@
 <template>
   <section class="container my-5">
-    <!-- Get a Quote Bar -->
-    <div class="d-flex align-items-center mx-auto mb-5" style="width:1200px; height:88px; background: #f6f6f6;">
-      <!-- Left Icon -->
-      <div style="width:134px; height:88px; display:flex; align-items:center; justify-content:center;">
-        <div style="width:88px; height:88px; border-radius:50%; background:#287D9F; display:flex; align-items:center; justify-content:center;">
-          <img
-          src="@/assets/images/AlfieHangOver.png"
-          alt="Quote Icon"
-          style="width:134px; height:88px;" />
+    <!-- Get a Quote Bar (full‐width 88px) -->
+    <div class="get-quote-bar mb-1">
+      <div class="get-quote-inner d-flex">
+        <!-- Left Icon -->
+        <div class="icon-wrapper d-flex justify-content-center">
+          <div class="icon-circle d-flex align-items-center justify-content-center">
+            <img
+              src="@/assets/images/AlfieHangOver.png"
+              alt="Quote Icon"
+              class="icon-img"
+            />
+          </div>
         </div>
-      </div>
-      <!-- Text -->
-      <div class="d-flex align-items-center" style="width:276px; height:50px;">
-        <span>Switch to Alfa for insurance savings.</span>
-      </div>
-      <!-- Spacer -->
-      <div class="flex-grow-1"></div>
-      <!-- Auto Dropdown -->
-      <div style="width:156px; height:31px;">
-        <select v-model="insuranceType" class="form-control" style="width:100%; height:100%;">
-          <option value="Auto">Auto</option>
-          <option value="Homeowners">Homeowners</option>
-          <option value="Renters">Renters</option>
-          <option value="Pet">Pet</option>
-        </select>
-      </div>
-      <!-- Zip Code -->
-      <div class="ml-3" style="width:156px; height:31px;">
-        <input v-model="zipCode" type="text" placeholder="Zip Code" class="form-control" style="width:100%; height:100%;" />
-      </div>
-      <!-- Get a Quote Button -->
-      <div class="ml-3" style="width:136px; height:40px;">
-        <button @click.prevent="getQuote" class="btn btn-primary" style="width:100%; height:100%;">Get a Quote</button>
+
+        <!-- Text -->
+        <div class="d-flex align-items-center text-wrapper">
+          <span>Switch to Alfa for insurance savings.</span>
+        </div>
+
+        <div class="flex-grow-1"></div>
+
+        <!-- Auto Dropdown -->
+        <div class="dropdown-wrapper">
+          <select
+            v-model="insuranceType"
+            class="form-select"
+          >
+            <option value="Auto">Auto</option>
+            <option value="Homeowners">Homeowners</option>
+            <option value="Renters">Renters</option>
+            <option value="Pet">Pet</option>
+          </select>
+          <i class="fas fa-chevron-down dropdown-icon"></i>
+        </div>
+
+        <!-- Zip Code -->
+        <div class="ml-3 zip-wrapper">
+          <input
+            v-model="zipCode"
+            type="text"
+            placeholder="Zip Code"
+            class="form-control"
+          />
+        </div>
+
+        <!-- Get a Quote Button -->
+        <div class="ml-3 button-wrapper">
+          <button
+            @click.prevent="getQuote"
+            class="btn btn-primary"
+          >
+            Get a Quote
+          </button>
+        </div>
       </div>
     </div>
 
+    <!-- Breadcrumb Trail -->
+    <div class="breadcrumb-container">
+      <a href="https://www.alfainsurance.com/" class="breadcrumb-link">Home</a>
+      <span class="breadcrumb-separator">›</span>
+      <a href="https://www.alfainsurance.com/insurance" class="breadcrumb-link">Insurance</a>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-current">Pet Insurance</span>
+    </div>
+
     <!-- Pet Insurance Intro -->
-    <div class="text-center mb-5">
-      <h1 class="display-4">Pet Insurance with Alfa®</h1>
-      <p class="lead">Pet insurance…</p>
+    <div class="pet-intro-container text-center mb-5">
+      <h1 class="pet-insurance-title mb-2">Pet Insurance with Alfa®</h1>
+      <div class="pet-intro-text">
+        Whether you're a first-time pet parent or have years of experience caring
+        for furry companions, you need pet insurance from a provider you can trust
+        to protect your beloved animals. Alfa is here to guide you through the
+        coverage options that fit your needs—so you can focus on the cuddles, not
+        the costs.
+      </div>
     </div>
 
     <!-- Image and Why Pet Insurance -->
     <div class="row mb-5">
-      <div class="col-md-6 text-center" style="width:635px; height:620px;">
+      <div class="col-md-6 text-center image-container">
         <img
-          src="@/assets/images/petting-dog.jpg"
+          src="@/assets/images/Dog_Image.png"
           alt="Petting a Dog"
           class="img-fluid rounded"
-          style="width:100%; height:100%; object-fit:cover;"
         />
       </div>
-      <div class="col-md-6 d-flex align-items-center" style="width:445px; height:620px;">
+      <div class="col-md-6 d-flex align-items-center text-block">
         <div>
           <h3>Why get pet insurance?</h3>
           <p>
@@ -157,5 +192,105 @@ export default {
 </script>
 
 <style scoped>
-/* All sizing & layout handled via inline styles and Bootstrap */
+/* Get a Quote Bar */
+.get-quote-bar {
+  width: 100%;
+  height: 50px;
+  background: #f6f6f6;
+  position: relative;
+  overflow: visible;
+}
+
+.get-quote-inner {
+  width: 772px;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.icon-wrapper { width: 134px; height: 88px; }
+.icon-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #287D9F;
+}
+.icon-img { width: 134px; height: 88px; }
+.text-wrapper { width: 276px; height: 50px; }
+
+/* only disable native arrow on the pet dropdown */
+.dropdown-wrapper {
+  width: 156px;
+  height: 31px;
+  position: relative;
+}
+.dropdown-wrapper .form-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none;
+  padding-right: 2rem;
+}
+.dropdown-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.zip-wrapper { width: 156px; height: 31px; }
+.button-wrapper { width: 136px; height: 40px; }
+
+/* Breadcrumb */
+.breadcrumb-container {
+  width: 1140px;
+  height: 47px;
+  margin: 0 auto 2rem;
+  padding: 16px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.breadcrumb-link,
+.breadcrumb-separator,
+.breadcrumb-current {
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 125%;
+}
+.breadcrumb-link { color: #333; text-decoration: none; }
+.breadcrumb-separator { color: #333; }
+.breadcrumb-current { color: #757575; }
+
+/* Intro */
+.pet-intro-container { width: 100%; height: 216px; }
+.pet-insurance-title {
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 64px;
+  color: #C30717;
+}
+.pet-intro-text {
+  width: 1074px;
+  height: 120px;
+  margin: 0 auto;
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 125%;
+  text-align: center;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image & Why */
+.image-container { width: 635px; height: 620px; }
+.text-block { width: 445px; height: 620px; }
+
+/* other Bootstrap‐based sections inherit their styling */
 </style>
