@@ -5,28 +5,23 @@
       <div class="get-quote-inner d-flex">
         <!-- Left Icon -->
         <div class="icon-wrapper d-flex justify-content-center">
-          <div class="icon-circle d-flex align-items-center justify-content-center">
             <img
               src="@/assets/images/AlfieHangOver.png"
               alt="Quote Icon"
               class="icon-img"
             />
-          </div>
         </div>
-
         <!-- Text -->
         <div class="d-flex align-items-center text-wrapper">
           <span>Switch to Alfa for insurance savings.</span>
         </div>
-
         <div class="flex-grow-1"></div>
-
         <!-- Auto Dropdown -->
         <div class="dropdown-wrapper">
           <select
             v-model="insuranceType"
             class="form-select"
-          >
+            >
             <option value="Auto">Auto</option>
             <option value="Homeowners">Homeowners</option>
             <option value="Renters">Renters</option>
@@ -34,7 +29,6 @@
           </select>
           <i class="fas fa-chevron-down dropdown-icon"></i>
         </div>
-
         <!-- Zip Code -->
         <div class="ml-3 zip-wrapper">
           <input
@@ -44,15 +38,11 @@
             class="form-control"
           />
         </div>
-
         <!-- Get a Quote Button -->
         <div class="ml-3 button-wrapper">
-          <button
-            @click.prevent="getQuote"
-            class="btn btn-primary"
-          >
-            Get a Quote
-          </button>
+          <router-link to="/quick-quote" class="btn btn-primary">
+        Get a Quote
+      </router-link>
         </div>
       </div>
     </div>
@@ -88,7 +78,6 @@
       class="dog-img"
     />
   </div>
-
   <!-- Right: Why Pet Insurance text -->
   <div class="why-text-wrapper">
     <div class="why-title">Why get pet insurance?</div>
@@ -103,7 +92,6 @@
     <!-- Coverage Highlights -->
     <div class="coverage-section">
   <div class="coverage-title">Our Pet Insurance Covers</div>
-
   <div class="coverage-container">
     <div class="coverage-item">
       <div class="coverage-icon">
@@ -116,7 +104,6 @@
         without delay.
       </div>
     </div>
-
     <div class="coverage-item">
       <div class="coverage-icon">
         <img src="@/assets/images/illness.png" alt="Illness" />
@@ -128,8 +115,7 @@
         diabetes or cancer.
       </div>
     </div>
-
-    <div class="coverage-item">
+   <div class="coverage-item">
       <div class="coverage-icon">
         <img src="@/assets/images/wellness.png" alt="Wellness" />
       </div>
@@ -163,44 +149,64 @@
   </div>
 </section>
 
-
-    <!-- Detailed Coverage Cards -->
-    <div class="row mb-5">
-      <div class="col-md-6 mb-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Injury and Illness Coverage</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet. Tincidunt lectus purus nec.</p>
-          </div>
+    <!-- Coverage Cards Section -->
+<div class="coverage-cards">
+  <div class="coverage-container">
+    <!-- Card 1: Injury & Illness -->
+    <div class="coverage-card">
+      <div class="coverage-icons">
+        <img src="@/assets/images/injury.png" alt="Injury Icon" />
+        <img src="@/assets/images/illness.png" alt="Illness Icon" />
+      </div>
+      <div class="coverage-content">
+        <div class="coverage-card-title">Injury and Illness Coverage</div>
+        <div class="coverage-card-desc">
+          This plan helps cover the cost of unexpected accidents and a wide range of illnesses—from broken bones and swallowed objects to infections, allergies, and chronic conditions. It’s designed to support your pet’s health when they need medical attention the most.
         </div>
       </div>
-      <div class="col-md-6 mb-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Injury and Illness + Wellness Coverage</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet. Tincidunt lectus purus nec.</p>
-          </div>
+    </div>
+    <!-- Card 2: Injury & Illness + Wellness -->
+    <div class="coverage-card">
+      <div class="coverage-icons">
+        <img src="@/assets/images/injury.png" alt="Injury Icon" />
+        <img src="@/assets/images/illness.png" alt="Illness Icon" />
+        <img src="@/assets/images/skinnyplus.png" alt="Plus Icon" class="plus-icon" />
+        <img src="@/assets/images/wellness.png" alt="Wellness Icon" />
+      </div>
+      <div class="coverage-content">
+        <div class="coverage-card-title">Injury and Illness + Wellness Coverage</div>
+        <div class="coverage-card-desc">
+          This comprehensive plan includes everything in the Injury &amp; Illness coverage, plus routine and preventive care like annual exams, vaccinations, flea and tick prevention, and dental cleanings. It’s a proactive approach to keeping your pet healthy and happy year-round.
         </div>
       </div>
     </div>
 
-    <!-- Find an Agent Row -->
-    <div class="row align-items-center py-4 bg-primary text-white rounded">
-      <div class="col-md-8">
-        <h4>Find an Agent:</h4>
-      </div>
-      <div class="col-md-4">
-        <form class="form-inline" @submit.prevent="findAgent">
-          <input
-            v-model="agentZip"
-            type="text"
-            class="form-control mr-2"
-            placeholder="Zip Code"
-          />
-          <button type="submit" class="btn btn-light">Go</button>
-        </form>
-      </div>
+  </div>
+</div>
+
+<!-- Find an Agent Banner -->
+<section class="find-agent-section">
+  <!-- map on the left -->
+  <img
+    src="@/assets/images/agentmap.png"
+    alt="Agent Map"
+    class="agent-map"
+  />
+
+  <!-- content on the right -->
+  <div class="find-agent-content">
+    <div class="agent-input-group">
+      <label class="agent-label">Find an Agent:</label>
+      <input
+        v-model="agentZip"
+        type="text"
+        placeholder="Zip Code"
+        class="agent-zip-input"
+      />
     </div>
+    <button @click.prevent="findAgent" class="go-button">Go</button>
+  </div>
+</section>
   </section>
 </template>
 
@@ -218,8 +224,8 @@ export default {
     getQuote() {
     },
     findAgent() {
-    }
   }
+}
 };
 </script>
 
@@ -232,7 +238,6 @@ export default {
   position: relative;
   overflow: visible;
 }
-
 .get-quote-inner {
   width: 772px;
   height: 50px;
@@ -240,7 +245,6 @@ export default {
   display: flex;
   align-items: center;
 }
-
 .icon-wrapper { width: 134px; height: 88px; }
 .icon-circle {
   width: 88px;
@@ -248,9 +252,12 @@ export default {
   border-radius: 50%;
   background: #287D9F;
 }
-.icon-img { width: 134px; height: 88px; }
+.icon-img { width: 88px; height: 88px; }
 .text-wrapper { width: 276px; height: 50px; }
-
+.dropdown-wrapper, .zip-wrapper, .button-wrapper{
+  display: flex;
+  align-items: center;
+}
 .dropdown-wrapper {
   width: 156px;
   height: 31px;
@@ -270,10 +277,14 @@ export default {
   transform: translateY(-50%);
   pointer-events: none;
 }
-
-.zip-wrapper { width: 156px; height: 31px; }
-.button-wrapper { width: 136px; height: 40px; }
-
+.zip-wrapper {
+  width: 156px;
+  height: 31px;
+}
+.button-wrapper {
+  width: 136px;
+  height: 40px;
+}
 /* Breadcrumb */
 .breadcrumb-container {
   width: 1140px;
@@ -295,7 +306,6 @@ export default {
 .breadcrumb-link { color: #333; text-decoration: none; }
 .breadcrumb-separator { color: #333; }
 .breadcrumb-current { color: #757575; }
-
 /* Intro */
 .pet-intro-container { width: 100%; height: 216px; }
 .pet-insurance-title {
@@ -318,9 +328,7 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 /* Image & Why */
-/* Container holding both image and text */
 .dog-why-section {
   width: 1110px;
   height: 620px;
@@ -328,7 +336,6 @@ export default {
   display: flex;
   gap: 30px;
 }
-
 /* Left side: fixed-size dog image */
 .dog-image-wrapper {
   width: 635px;
@@ -340,7 +347,6 @@ export default {
   height: 620px;
   object-fit: cover;
 }
-
 /* Right side: text, centered vertically & horizontally */
 .why-text-wrapper {
   width: 445px;
@@ -351,10 +357,7 @@ export default {
   justify-content: center;
   text-align: center;
   background: #D7E9F4;
-
-  ;
 }
-
 /* Title styling */
 .why-title {
   width: 365px;
@@ -366,7 +369,6 @@ export default {
   letter-spacing: 0;
   color: #333333;
 }
-
 /* Paragraph styling */
 .why-paragraph {
   width: 375px;
@@ -388,7 +390,6 @@ export default {
   flex-direction: column;
   gap: 40px;
 }
-
 .coverage-title {
   width: 410px;
   height: 45px;
@@ -400,7 +401,6 @@ export default {
   text-align: center;
   color: #333333;
 }
-
 .coverage-container {
   width: 1110px;
   height: 307px;
@@ -408,7 +408,6 @@ export default {
   display: flex;
   gap: 30px;
 }
-
 .coverage-item {
   flex: 1;
   display: flex;
@@ -416,7 +415,6 @@ export default {
   align-items: center;
   gap: 16px;
 }
-
 .coverage-icon {
   width: 120px;
   height: 120px;
@@ -425,7 +423,6 @@ export default {
   width: 100%;
   height: 100%;
 }
-
 .coverage-item-title {
   font-family: 'Core Sans N';
   font-weight: 400;
@@ -434,7 +431,6 @@ export default {
   text-align: center;
   color: #333333;
 }
-
 .coverage-item-desc {
   font-family: 'Core Sans N';
   font-weight: 300;
@@ -443,16 +439,12 @@ export default {
   text-align: center;
   color: #333333;
 }
-/* ----------------------------------------
-   Homeowners Plus Pets Banner
-   ---------------------------------------- */
    .homeowners-banner {
   position: relative;
   width: 1200px;
   height: 423px;
   margin: 2rem auto;
 }
-
 /* background layers: both fill the banner */
 .banner-bg {
   position: absolute;
@@ -463,7 +455,6 @@ export default {
   background-size: cover;
   background-position: center;
 }
-
 /* your two supplied PNGs */
 .banner-bg-dark {
   background-image: url('@/assets/images/darkbackground.png');
@@ -473,7 +464,6 @@ export default {
   background-image: url('@/assets/images/lightbackground.png');
   z-index: 1;
 }
-
 /* content wrapper */
 .banner-content {
   position: absolute;
@@ -486,7 +476,6 @@ export default {
   gap: 16px;
   z-index: 2;
 }
-
 /* title */
 .banner-title {
   font-family: 'Core Sans N';
@@ -496,7 +485,6 @@ export default {
   text-align: center;
   color: #333333;
 }
-
 /* description */
 .banner-desc {
   width: 945px;
@@ -507,7 +495,6 @@ export default {
   text-align: center;
   color: #333333;
 }
-
 /* icons row */
 .bundle-images {
   display: flex;
@@ -526,6 +513,140 @@ export default {
   width: 105px;
   height: 104px;
 }
-
+/* Coverage Cards Section */
+.coverage-cards {
+  width: 920px;
+  height: 407px;
+  margin: 0 auto 2rem;
+}
+.coverage-container {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  height: 100%;
+}
+/* Individual card styling */
+.coverage-card {
+  flex: 1 1 445px;
+  max-width: 445px;
+  height: 100%;
+  border: 2px solid #999999;
+  border-radius: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+/* Icons row */
+.coverage-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.coverage-icons img:not(.plus-icon) {
+  width: 68px;
+  height: 68px;
+}
+.coverage-icons .plus-icon {
+  width: 20px;
+  height: 20px;
+}
+/* Title + description */
+.coverage-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.coverage-card-title {
+  width: 397px;
+  font-family: 'Core Sans N';
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 125%;
+  letter-spacing: 0;
+  color: #333333;
+}
+.coverage-card-desc {
+  width: 397px;
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 125%;
+  letter-spacing: 0;
+  color: #333333;
+}
+/* Find an Agent Banner */
+.find-agent-section {
+  position: relative;
+  width: 1140px;
+  height: 222px;
+  margin: 2rem auto;
+  background-color: #fafafa;
+}
+.agent-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 268.05px;
+  height: 222px;
+  object-fit: cover;
+}
+.find-agent-content {
+  position: absolute;
+  top: 83px;
+  left: 275.24px;
+  width: 621.35px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.agent-input-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 487px;
+  height: 35px;
+}
+.agent-label {
+  font-family: 'Core Sans N';
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 125%; /* ~35px */
+  color: #287D9F;
+}
+.agent-zip-input {
+  width: 264px;
+  height: 35px;
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+  color: #333333;
+  border: none;
+  border-bottom: 1px solid #333333;
+}
+.agent-zip-input::placeholder {
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+  color: #333333;
+}
+.go-button {
+  width: 94px;
+  height: 56px;
+  border-radius: 5px;
+  padding: 18px 36px;
+  font-family: 'Core Sans N';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #ffffff;
+  background: #287D9F;
+  border: none;
+  cursor: pointer;
+}
 /* other Bootstrap‐based sections inherit their styling */
 </style>

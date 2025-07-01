@@ -1,6 +1,16 @@
 <template>
-
-
+  <!-- Breadcrumb Bar -->
+  <section class="breadcrumb-container">
+    <!-- External links for Home and Insurance -->
+    <a href="https://www.alfainsurance.com/" class="breadcrumb-link">Home</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href="https://www.alfainsurance.com/insurance" class="breadcrumb-link">Insurance</a>
+    <span class="breadcrumb-separator">›</span>
+    <!-- Internal router link back to PetInsurance.vue -->
+    <router-link to="/" class="breadcrumb-link">Pet Insurance</router-link>
+    <span class="breadcrumb-separator">›</span>
+    <span class="breadcrumb-current">Quick Quote</span>
+  </section>
   <section class="hero">
     <div class="hero-image">
       <img src="@/assets/images/petting-dog.jpg" alt="Petting a Dog" />
@@ -138,4 +148,22 @@ html, body, #app {
   padding: 1rem;
   border-radius: 4px;
 }
+.breadcrumb-container {
+  width: 1140px;
+  height: 47px;
+  margin: 0 auto;
+  padding: 6px 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.breadcrumb-link, .breadcrumb-separator, .breadcrumb-current {
+  font-family: 'Core Sans N';
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 125%;
+}
+.breadcrumb-link { color: #333; text-decoration: none; }
+.breadcrumb-separator { color: #333; }
+.breadcrumb-current { color: #757575; }
 </style>
