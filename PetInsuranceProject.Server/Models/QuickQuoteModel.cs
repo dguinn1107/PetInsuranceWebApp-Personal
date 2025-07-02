@@ -1,5 +1,4 @@
-﻿using System.Data.SqlTypes;
-
+﻿namespace PetInsuranceProject.Server.Models;
 public class QuickQuoteModel
 {
     // Private backing fields
