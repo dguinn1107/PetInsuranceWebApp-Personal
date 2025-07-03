@@ -2,3 +2,4 @@ C:\Users\BC4599\source\repos\PetInsuranceProject\petinsuranceproject.client\obj\
 C:\Users\pj4299\source\repos\petinsurance\PetInsuranceWebApp\PetInsuranceProject.Client\obj\Debug\PetInsuranceProject.Client.esproj.CoreCompileInputs.cache
 C:\Users\BC4599\source\repos\PetInsuranceWebApp\PetInsuranceProject.Client\obj\Debug\PetInsuranceProject.Client.esproj.CoreCompileInputs.cache
 C:\Users\BC4599\source\repos\PetInsuranceWebApp-1\petinsuranceproject.client\obj\Debug\PetInsuranceProject.Client.esproj.CoreCompileInputs.cache
+C:\Users\LQ3571\source\repos\PetInsuranceWebApp\PetInsuranceProject.Client\obj\Debug\PetInsuranceProject.Client.esproj.CoreCompileInputs.cache
