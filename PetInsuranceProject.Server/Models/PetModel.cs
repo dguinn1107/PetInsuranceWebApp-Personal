@@ -10,7 +10,7 @@ public class PetModel
 
     private BreedModel _breed;
     private readonly List<HealthRecordModel> _healthRecords = new();
-    private readonly List<QuickQuote> _quickQuotes = new();
+    private readonly List<QuickQuoteModel> _quickQuotes = new();
 
     protected PetModel() { }
 
@@ -24,5 +24,5 @@ public class PetModel
     }
 
     public void AddHealthRecord(HealthRecordModel health) => _healthRecords.Add(health);
-    public void AddQuote(QuickQuote quote) => _quickQuotes.Add(quote);
+    public void AddQuote(QuickQuoteModel quote) => _quickQuotes.Add(quote);
 }
