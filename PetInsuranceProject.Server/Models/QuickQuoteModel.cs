@@ -1,25 +1,30 @@
-﻿namespace PetInsuranceProject.Server.Models;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+
+namespace PetInsuranceProject.Server.Models;
+
+
+
 public class QuickQuoteModel
 {
-    private Guid _quoteId;
-    private string _userName;
-    private string _email;
-    private Guid _petId;
-    private Guid _healthId;
 
-    private PetModel _pet;
-    private HealthRecordModel _health;
+    public Guid QuoteId { get; set; }
+    public string QuoteUserFirstName { get; set; }  
+    public string QuoteUserLastName { get; set; }
+    public string QuoteEmail { get; set; }
 
-    protected QuickQuoteModel() { }
 
-    public QuickQuoteModel(string userName, string email, Guid petId, Guid healthId)
-    {
-        _quoteId = Guid.NewGuid();
-        _userName = userName;
-        _email = email;
-        _petId = petId;
-        _healthId = healthId;
-    }
+    //Pet
+    public Guid PetId { get; set; }
+    [ForeignKey("PetId")]
+
+    public PetModel Pet { get; set; }
+
+
+
+
+
 }
 
 

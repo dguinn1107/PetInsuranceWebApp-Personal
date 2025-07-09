@@ -1,28 +1,28 @@
-﻿namespace PetInsuranceProject.Server.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PetInsuranceProject.Server.Models;
 
 public class PetModel
 {
-    private Guid _petId;
-    private string _petName;
-    private Guid _breedId;
-    private int _petAge;
-    private bool _petSex;
+    [Key]
+    public Guid PetId { get; set; }
 
-    private BreedModel _breed;
-    private readonly List<HealthRecordModel> _healthRecords = new();
-    private readonly List<QuickQuoteModel> _quickQuotes = new();
+    public string PetName { get; set; }
+    public int PetAge { get; set; }
 
-    protected PetModel() { }
+    public bool petSex { get; set; }
 
-    public PetModel(string petName, Guid breedId, int petAge, bool petSex)
-    {
-        _petId = Guid.NewGuid();
-        _petName = petName;
-        _breedId = breedId;
-        _petAge = petAge;
-        _petSex = petSex;
-    }
+    // Foreign key and relationship
+    public Guid BreedId { get; set; }
 
-    public void AddHealthRecord(HealthRecordModel health) => _healthRecords.Add(health);
-    public void AddQuote(QuickQuoteModel quote) => _quickQuotes.Add(quote);
+    [ForeignKey("BreedId")]
+    public BreedModel Breed { get; set; }
+
+    //Realtionships
+    public List<QuickQuoteModel> Quotes { get; set; } = new List<QuickQuoteModel>();
+
+    public List<HealthRecordModel> HealthRecords { get; set; } = new List<HealthRecordModel>();
+
+
 }

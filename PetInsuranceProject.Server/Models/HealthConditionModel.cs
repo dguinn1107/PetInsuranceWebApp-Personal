@@ -2,18 +2,9 @@
 
 public class HealthConditionModel
 {
-    private int _conditionId;
-    private Guid _healthId;
-    private string _name;
+    public int CondtionId { get; set; }
+    public string ConditionName { get; set; }
 
-    private HealthRecordModel _health;
-
-    protected HealthConditionModel() { }
-
-    public HealthConditionModel(Guid healthId, string name)
-    {
-        _conditionId = 0; 
-        _healthId = healthId;
-        _name = name;
-    }
+    //Relationships
+    public List<HealthRecordConditionModel> HealthRecordConditions { get; set; } = new List<HealthRecordConditionModel>();
 }
