@@ -1,24 +1,34 @@
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
+using Azure.Identity;
+using Azure.Identity;
+
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 using PetInsuranceProject.Server.Data;
 
+
+
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Default JSON options (preserves ASP.NET Core's camelCase-to-PascalCase binding)
-builder.Services.AddControllers();
-// Add Entity Framework Core with SQL Server
-builder.Services.AddDbContext<DBContextClass>();
-    //(options =>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+var keyVaultName = builder.Configuration["KeyVaultName"];
+var keyVaultUri = new Uri($"https://{keyVaultName}.vault.azure.net/");
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowClient", policy =>
-    {
-        policy.WithOrigins("http://localhost:5173")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
+builder.Configuration.AddAzureKeyVault(keyVaultUri, new DefaultAzureCredential());
+builder.Services.AddControllers();
+
+
+
+builder.Services.AddDbContext<DBContextClass>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 
 var app = builder.Build();
 
@@ -28,11 +38,12 @@ app.MapControllers();
 app.Run();
 
 
-//TO-DO
-// EF Core setup: 
-// 1. Install Microsoft.EntityFrameworkCore.SqlServer
-// 2. Create DBContextClass : DbContext
-// 3. Add "DefaultConnection" string in appsettings.json
-// 4. using Microsoft.EntityFrameworkCore;
-// CORS: Allows http://localhost:5173 for frontend dev
-// CORS to allow Vue dev server
+/////Tomorrow’s tasks:
+
+//Create Azure Key Vault in existing resource group.
+
+//Add secrets (passwords) to Key Vault.
+
+//Update code with correct AddAzureKeyVault usage and usings.
+
+//Build and test Key Vault integration.
