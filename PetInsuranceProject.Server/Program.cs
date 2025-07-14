@@ -36,13 +36,3 @@ app.MapControllers();
 
 app.Run();
 
-
-/////Tomorrow’s tasks:
-
-//Create Azure Key Vault in existing resource group.
-
-//Add secrets (passwords) to Key Vault.
-
-//Update code with correct AddAzureKeyVault usage and usings.
-
-//Build and test Key Vault integration.
