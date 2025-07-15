@@ -14,10 +14,6 @@ using PetInsuranceProject.Server.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//var keyVaultName = builder.Configuration["KeyVaultName"];
-//var keyVaultUri = new Uri($"https://{keyVaultName}.vault.azure.net/");
-
-//builder.Configuration.AddAzureKeyVault(keyVaultUri, new DefaultAzureCredential());
 
 
 builder.Services.AddDbContext<PetInsuranceContext>(options =>
