@@ -65,22 +65,36 @@ const checkAge = (event) => {
   }
 };
 
-const getQuote = async () => {
-  if (!form.value.age) return;
-  try {
-    const res = await axios.post('/api/quote', {
-      ownerName:  form.value.name,
-      ownerEmail: form.value.email,
-      petName:    form.value.petName,
-      petBreed:   form.value.breed,
-      petAge:     parseInt(form.value.age, 10)
-    });
-    quote.value = res.data.monthlyPremium;
-  } catch (err) {
-    console.error(err);
-    alert(err.response?.data || 'Error retrieving quote.');
-  }
-};
+  const getQuote = async () => {
+    if (!form.value.age || !form.value.breed) return;
+
+    const breedIndex = breeds.indexOf(form.value.breed);
+    if (breedIndex === -1) {
+      alert("Breed not found.");
+      return;
+    }
+
+    try {
+      const res = await axios.post('https://localhost:7289/quick-quote', {
+        quoteUserFirstName: form.value.name,
+        quoteUserLastName: "Demo", // or get real last name
+        quoteEmail: form.value.email,
+        pet: {
+          petName: form.value.petName,
+          petAge: parseInt(form.value.age, 10),
+          petSex: true, // always male for now
+          breedId: breedIndex,
+          quickQuotes: [],
+        }
+      });
+
+
+      quote.value = res.data.premium;
+    } catch (err) {
+      console.error(err);
+      alert(err.response?.data || 'Error retrieving quote.');
+    }
+  };
 </script>
 
 <style scoped>
